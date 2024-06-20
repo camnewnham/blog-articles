@@ -26,22 +26,21 @@ concurrency:
 
 jobs:
   build:
-    environment:
-      name: github-pages
+    environment: github-pages
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Articles
-        uses: actions/checkout@v4
-        with: 
-          fetch-depth: 0
-          path: gha_articles
-          
+    steps:          
       - name: Checkout Template
         uses: actions/checkout@v4
         with:
           repository: ${{ env.TEMPLATE_REPO }}
       - name: Set articles path
         run: echo "ARTICLES_PATH=gha_articles" >> $GITHUB_ENV
+
+      - name: Checkout Articles
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+          path: gha_articles
         
       - name: Detect package manager
         id: detect-package-manager
