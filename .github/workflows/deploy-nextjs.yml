@@ -26,19 +26,13 @@ concurrency:
 
 jobs:
   build:
-    environment: github-pages
     runs-on: ubuntu-latest
     steps:          
-
-      - name: Test 
-        run: |
-          echo "Template"
-          echo $TEMPLATE_REPO
-    
       - name: Checkout Template
         uses: actions/checkout@v4
         with:
-          repository: ${{ env.TEMPLATE_REPO }}
+          repository: camnewnham/nextjs-git-template
+          
       - name: Set articles path
         run: echo "ARTICLES_PATH=gha_articles" >> $GITHUB_ENV
 
