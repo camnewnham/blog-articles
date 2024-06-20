@@ -27,20 +27,20 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      UNDER_CONSTRUCTION: true
+      ARTICLES_PATH: gha_articles
     steps:          
       - name: Checkout Template
         uses: actions/checkout@v4
         with:
           repository: camnewnham/nextjs-git-template
-          
-      - name: Set articles path
-        run: echo "ARTICLES_PATH=gha_articles" >> $GITHUB_ENV
 
       - name: Checkout Articles
         uses: actions/checkout@v4
         with: 
           fetch-depth: 0
-          path: gha_articles
+          path: ${{ env.ARTICLES_PATH }}
 
       - name: Test
         run: ls -R
