@@ -29,6 +29,12 @@ jobs:
     environment: github-pages
     runs-on: ubuntu-latest
     steps:          
+
+      - name: Test 
+        run: |
+          echo "Template"
+          echo $TEMPLATE_REPO
+    
       - name: Checkout Template
         uses: actions/checkout@v4
         with:
